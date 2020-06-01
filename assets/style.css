@@ -1,0 +1,42 @@
+ .sm{
+	margin-top: -30px;
+}
+
+
+.red{
+	color: blue;
+}
+
+.noresize{
+	resize: none;
+
+}
+
+.cbox{
+width: 30px;
+height: 30px;
+}
+
+.font-1{
+font-size:25px};
+
+.green{
+	background-color:green;
+}
+
+
+.bg-purple{
+	background-color: purple;
+}
+.bg-red{
+	background-color: red;
+}
+
+.bg-yellow{
+	background-color: yellow;
+}
+
+.bg-orange{
+	background-color: orange;
+}
+

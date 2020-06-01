@@ -1,0 +1,63 @@
+.bg1{
+	/*background:  url("bg.jpg");
+	background-repeat: cover;
+	background-position: center;*/
+	
+  /* fallback colour. Make sure this is just one solid colour. */
+    /*background: -webkit-linear-gradient(rgba(29, 38, 113, 0.2), rgba(195, 55, 100, 0.8)), url("bg.jpg");*/
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/src.jpg"); /* The least supported option. */
+    /*background-repeat: cover;*/
+	background-position: center;
+	 background-size: cover;
+
+}
+
+.bg2{
+    /*background:  url("bg.jpg");
+    background-repeat: cover;
+    background-position: center;*/
+    
+  /* fallback colour. Make sure this is just one solid colour. */
+    /*background: -webkit-linear-gradient(rgba(29, 38, 113, 0.2), rgba(195, 55, 100, 0.8)), url("bg.jpg");*/
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/adeh.jpeg"); /* The least supported option. */
+    /*background-repeat: cover;*/
+    /*background-position: center;*/
+     background-size: cover;
+
+}
+
+.bg3{
+    /*background:  url("bg.jpg");
+    background-repeat: cover;
+    background-position: center;*/
+    
+  /* fallback colour. Make sure this is just one solid colour. */
+    /*background: -webkit-linear-gradient(rgba(29, 38, 113, 0.2), rgba(195, 55, 100, 0.8)), url("bg.jpg");*/
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/bg.jpg"); /* The least supported option. */
+    /*background-repeat: cover;*/
+    background-position: center;
+     background-size: cover;
+     background-repeat: no-repeat;
+
+}
+
+.front{
+        padding: 20px;
+        background: linear-gradient( rgba(0, 0,30, 0.3),  rgba(0, 0, 30, 0.3)), url("../bg2/src.jpeg");
+        background-size: cover;
+        background-position: center;
+        background: rgba(70, 4, 7, 0.1);
+        color: #fff;
+        font:  Verdana, sans-serif;
+        /*height: 500px;*/
+     }
+
+
+.t-area{
+	resize: none;
+	height: 55px;
+}
+
+.cbox{
+zoom:2.4;
+}

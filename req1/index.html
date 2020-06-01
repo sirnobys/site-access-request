@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Site Access Request Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="colorlib.com">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+
+		<!-- DATE-PICKER -->
+		<link rel="stylesheet" href="vendor/date-picker/css/datepicker.min.css">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+            <form action="" id="wizard">
+                    
+        		<!-- SECTION 1 -->
+                <h4></h4>
+                <section>
+                    <h3>Personal Details</h3>
+                	<div class="form-row">
+                        <div class="form-col">
+                            <label for="">
+                                Full Name
+                            </label>
+                            <div class="form-holder">
+                                <i class="zmdi zmdi-account-o"></i>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                       <div class="form-col">
+                            <label for="">
+                                Select One
+                            </label>
+                            <div class="form-holder">
+                                <i class="zmdi zmdi-caret-down"></i>
+                                <select type="text" class="form-control">
+                                    <option>Choose one...</option>
+                                    <option>Employee</option>
+                                    <option>Contractor</option>
+                                    <option>Visitor</option>
+                                    <option>Other</option>
+                                </select> 
+                            </div>
+                        </div>
+                	</div>
+                    <div class="form-row">
+                         <div class="form-col">
+                            <label for="">
+                                Purpose of Access
+                            </label>
+                            <div class="form-holder">
+                               <textarea placeholder="Purpose of Access"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <label for="">
+                               Select Date/s
+                            </label>
+                            <div class="form-holder">
+                                <i class="zmdi zmdi-calendar"></i>
+                                <input type="text" class="form-control datepicker-here" data-language='en' data-date-format="dd - mm - yyyy" id="dp1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        FEEDING/ACCOMMODATION REQUIREMENTS – “EDI-COM-FRM-003 MUST BE COMPLETED AND AUTHORIZED
+                    </div>
+
+                    <div class="form-row">
+                        <table cellpadding="10">
+                            <thead class="text-center text-dark">
+                                <tr>
+                                    <th colspan="10">INDUCTION IS MANDATORY – NO EXCEPTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                        <label class="text-dark">
+                                            Full <input type="radio" value="full" name="induction">
+                                        </label>
+                                        <div class="form-holder">
+                              
+                                          <span style="font-size: 12px"><a href="Book throughpmgl.induction@perseusmining.co.gh">(Book throughpmgl.induction@perseusmining.co.gh)</a></span>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <label class="text-center">
+                                            Visitor
+                                           <input type="radio" value="visitor" name="induction">
+                                        </label>
+                                         <div class="form-holder">
+                              
+                               <span style="font-size: 12px"><a href="Book throughpmgl.induction@perseusmining.co.gh">(Book throughpmgl.induction@perseusmining.co.gh)</a></span>
+
+                            </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                      <!--   <div class="form-col">
+                            <label >
+                                Full <input type="radio" value="full" name="induction">
+                            </label>
+                            <div class="form-holder">
+                              
+                               <span style="font-size: 11px"><a href="Book throughpmgl.induction@perseusmining.co.gh">(Book throughpmgl.induction@perseusmining.co.gh)</a></span>
+
+                            </div>
+
+                        </div> -->
+                        <!-- <div class="form-col">
+                            <label >
+                                Visitor
+                               <input type="radio" value="visitor" name="induction">
+
+                            </label>
+                               <div class="form-holder">
+                               <span style="font-size: 11px;">  <a href="Completed at main site Security Gate">(Completed at main site Security Gate)</a></span>
+                            </div>
+                        </div> -->
+                    </div>
+                   
+                </section>
+                
+				<!-- SECTION 2 -->
+                <h4></h4>
+                <section>
+                	<h3>INDUCTION IS MANDATORY – NO EXCEPTIONS</h3>
+                    
+                    <div class="form-row">
+                        <table cellpadding="5"  class="text-center table-hover table-bordered text-dark ">
+                              <thead>
+                                <tr>
+                                    <th colspan="4" style="background-color: pink">AREA ACCESS AUTHORIZATION</th>
+                                </tr>
+                                <tr>
+                                  <th scope="col">COLOUR</th>
+                                  <th scope="col">AREA AUTHOURISED TO BE ACCESSED</th>
+                                  <th scope="col">TICK ACCESS AREAS REQUIRED</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="bg-white" width="150">white</td>
+                                  <td>Admin Buildings</td>
+                                  <td><input type="checkbox" name="white" value="Admin Buildings"></td>
+                                </tr>
+                                <tr>
+                                  <td style="background-color: grey">grey</td>
+                                  <td>Warehouse</td>
+                                  <td><input type="checkbox" name="white" value="Warehouse"></td>
+                                </tr>
+                                <tr>
+                                  <td class="bg-purple">purple</td>
+                                  <td>Mine Camp Village</td>
+                                  <td><input type="checkbox" name="purple" value="Mine Camp Village"></td>
+                                </tr>
+                                <tr>
+                                  <td class="bg-red">red</td>
+                                  <td>Active Mine Area (Pits)</td>
+                                  <td><input type="checkbox" name="red" value="Admin Buildings"></td>
+                                </tr>
+                                <tr>
+                                  <td class="bg-orange">orange</td>
+                                  <td>Environs</td>
+                                  <td><input type="checkbox" name="white" value="Environs"></td>
+                                </tr>
+                                <tr>
+                                  <td class="bg-yellow">yellow</td>
+                                  <td>Processing Plant Area</td>
+                                  <td><input type="checkbox" name="yellow" value="Processing Plant Area"></td>
+                                </tr>
+                                <tr>
+                                  <td class="bg-green">green</td>
+                                  <td>Outside Perimeter Fence Only</td>
+                                  <td><input type="checkbox" name="green" value="Outside Perimeter Fence"></td>
+                                </tr>
+                                <tr>
+                                  <td class="bg-primary">blue</td>
+                                  <td>Contractors Yard</td>
+                                  <td><input type="checkbox" name="blue" value="Contractors Yard"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        <!-- <div class="form-col">
+                            <label for="">
+                                Apartment
+                            </label>
+                            <div class="form-holder">
+                                <i class="zmdi zmdi-home"></i>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <label for="">
+                                Town / City
+                            </label>
+                            <div class="form-holder">
+                                <i class="zmdi zmdi-pin-drop"></i>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="">
+                                County
+                            </label>
+                            <div class="form-holder">
+                                <i class="zmdi zmdi-pin"></i>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <label for="">
+                                Postcode / Zip
+                            </label>
+                            <div class="form-holder password">
+                                <i class="zmdi zmdi-eye"></i>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                    </div> -->
+                </section>
+
+                <!-- SECTION 3 -->
+                <h4></h4>
+                <section>
+                    <h3 style="margin-bottom: 37px;">What are you doing?</h3>
+                    <div class="grid">
+                        <div class="grid-item active">
+                            <div class="thumb">
+                                <img src="images/programming.jpg" alt="">
+                            </div>
+                            <div class="heading">
+                                Programming
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="thumb">
+                                <img src="images/sports.jpg" alt="">
+                            </div>
+                            <div class="heading">
+                                Sports
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="thumb">
+                                <img src="images/business.jpg" alt="">
+                            </div>
+                            <div class="heading">
+                                Business
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="thumb">
+                                <img src="images/tour-guide.jpg" alt="">
+                            </div>
+                            <div class="heading">
+                                Tour Guide
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="thumb">
+                                <img src="images/art-design.jpg" alt="">
+                            </div>
+                            <div class="heading">
+                                Art-Design
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="thumb">
+                                <img src="images/doctor.jpg" alt="">
+                            </div>
+                            <div class="heading">
+                                Doctor
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+		</div>
+
+		<script src="js/jquery-3.3.1.min.js"></script>
+		
+		<!-- JQUERY STEP -->
+		<script src="js/jquery.steps.js"></script>
+
+		<!-- DATE-PICKER -->
+		<script src="vendor/date-picker/js/datepicker.js"></script>
+		<script src="vendor/date-picker/js/datepicker.en.js"></script>
+
+		<script src="js/main.js"></script>
+
+<!-- Template created and distributed by Colorlib -->
+</body>
+</html>
