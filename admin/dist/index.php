@@ -7,7 +7,94 @@ Website: http://www.allphptricks.com/
 */
 
 include("../../login/auth.php"); //include auth.php file on all secure pages ?>
+<?php
+$servername='localhost';
+$username='root';
+$password='';
+$dbname = "sar";
+$conn=mysqli_connect($servername,$username,$password,$dbname);
+$query="SELECT * from site_access";
 
+if(!$conn){
+   die('Could not Connect My Sql:' .mysql_error());
+}
+
+
+if (isset($_POST['app'])) {
+
+    $approve=$_POST['approve'];
+    $approve_query="UPDATE site_access set status=1 where id=$approve";
+    mysqli_query($conn,$approve_query);
+
+    // if (mysqli_query($conn,$approve_query)) {
+    //     # code...
+        echo("<script>
+            alert('Access Approved');
+         </script>
+
+    //     ");
+
+        echo "<meta http-equiv='refresh' content='0'>";
+
+    // }
+
+    
+
+    
+}
+
+if (isset($_POST['dec'])) {
+    
+$decline=$_POST['decline'];
+echo($decline);
+$decline_query="UPDATE site_access  set status=2 where id=$decline";
+mysqli_query($conn,$decline_query);
+
+echo("<script>
+        alert('Access declined');
+    </script>
+
+        ");
+        echo "<meta http-equiv='refresh' content='0'>";
+
+
+}
+
+
+
+
+
+if (isset($_POST['app'])) {
+
+    $approve=$_POST['approve'];
+    $approve_query="UPDATE site_access set status=1 where id=$approve";
+    mysqli_query($conn,$approve_query);
+
+    // if (mysqli_query($conn,$approve_query)) {
+    //     # code...
+        echo("<script>
+            alert('Access Approved');
+         </script>
+
+    //     ");
+
+        echo "<meta http-equiv='refresh' content='0'>";
+
+    }
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+?>
 
 <!DOCTYPE html>
 
@@ -25,20 +112,20 @@ include("../../login/auth.php"); //include auth.php file on all secure pages ?>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Request Access System</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand" href="index.php">Request Access System</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
+               <!--  <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
                     </div>
-                </div>
+                </div> -->
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?php echo $_SESSION['username']; ?></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
                         <div class="dropdown-divider"></div>
@@ -54,7 +141,7 @@ include("../../login/auth.php"); //include auth.php file on all secure pages ?>
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html"
+                            <a class="nav-link" href="index.php"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
@@ -102,7 +189,7 @@ include("../../login/auth.php"); //include auth.php file on all secure pages ?>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        <p>Welcome <?php echo $_SESSION['username']; ?>!</p>
+                        <p><?php echo $_SESSION['username']; ?>!</p>
                         
                     </div>
                 </nav>
@@ -174,55 +261,136 @@ include("../../login/auth.php"); //include auth.php file on all secure pages ?>
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Time</th>
-                                                <th>Date</th>
+                                                <th>Class</th>
+                                                <th>Start date</th>
+                                                <th>End date</th>
+                                                <th>induction</th>
+                                                <th>Area Access</th>
+                                                <th>Purpose</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Time</th>
-                                                <th>Date</th>
+                                                <th>Class</th>
+                                                <th>Start date</th>
+                                                <th>End date</th>
+                                                <th>induction</th>
+                                                <th>Area Access</th>
+                                                <th>Purpose</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             
-                                          
-                                            <tr>
+                                        <?php 
+
+                                        $query="SELECT * from site_access";
+                                       $table= mysqli_query($conn,$query);
+                                       //$status = mysqli_fetch_assoc($table);
+                                       
+
+
+
+                                       $dataRow = "";
+                                       
+
+                                            
+
+                                         ?>
+
+                                          <?php while($row1 = mysqli_fetch_array($table)):
+                                                      $status = $row1['status'];
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $row1['name'];?></td>
+                                                    <td><?php echo $row1['class'];?></td>
+                                                    <td><?php echo $row1['start_date'];?></td>
+                                                    <td><?php echo $row1['end_date'];?></td>
+                                                    <td><?php echo $row1['induction'];?></td>
+                                                    <td><?php echo $row1['area_access'];?></td>
+                                                    <td><?php echo $row1['purpose'];?></td>
+                                                    <td>
+                                                        <?php 
+                                                            if ($status==0) {
+
+                                                            
+                                                            
+                                                         ?>
+                                                        <form action="" method="post">
+                                                         <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
+                                                        <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
+
+                                                        <input type="submit" name="app" class="btn btn-success" value="approve">
+                                                        <input type="submit" name="dec" class="btn btn-danger" value="decline">
+                                                        
+
+                                                        <?php ;} 
+
+
+                                                           else if ($status==1) {
+                                                               # code...
+                                                           ?> 
+                                                            <input type="submit"  name="" class="btn btn-success" value="approved">
+                                                        
+                                                            <?php  ;}
+                                                                 else if ($status==2) {
+
+                                                            ?>
+                                                            
+                                                        <input type="submit"  name="" class="btn btn-danger" value="declined">
+                                                        </form>
+                                                            <?php  ;}?>
+
+                                                           
+
+
+                                                             <?php 
+
+
+                                                              ?>
+
+                                                    </td>
+                                                        
+
+                                                        
+                                                </tr>
+                                         <?php endwhile;?>
+
+
+
+                                           <!--  <tr>
                                                 <td>Fiona Green</td>
                                                 <td>Chief Operating Officer (COO)</td>
                                                 <td>San Francisco</td>
                                                 <td>48</td>
                                                 <td>2010/03/11</td>
                                             </tr>
-                                            
+                                             -->
                                             
                                           
-                                            <tr>
+                                          <!--   <tr>
                                                 <td>Sakura Yamamoto</td>
                                                 <td>Support Engineer</td>
                                                 <td>Tokyo</td>
                                                 <td>37</td>
                                                 <td>2009/08/19</td>
-                                            </tr>
-                                            <tr>
+                                            </tr> -->
+                                            <!-- <tr>
                                                 <td>Thor Walton</td>
                                                 <td>Developer</td>
                                                 <td>New York</td>
                                                 <td>61</td>
                                                 <td>2013/08/11</td>
-                                            </tr>
-                                            <tr>
+                                            </tr> -->
+                                            <!-- <tr>
                                                 <td>Finn Camacho</td>
                                                 <td>Support Engineer</td>
                                                 <td>San Francisco</td>
                                                 <td>47</td>
                                                 <td>2009/07/07</td>
-                                            </tr>
+                                            </tr> -->
                                           
                                         
                                         
@@ -247,6 +415,17 @@ include("../../login/auth.php"); //include auth.php file on all secure pages ?>
                 </footer>
             </div>
         </div>
+
+
+            <script type="text/javascript">
+
+
+
+            </script>
+
+
+
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
