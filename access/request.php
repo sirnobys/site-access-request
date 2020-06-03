@@ -58,7 +58,7 @@ echo $area_access_send;
 	$receipt_num);
 	
 	 $sql = "INSERT INTO site_access (phone,name,email,area_access,class,start_date,end_date,purpose,induction,po_num,valid,receipt_num)
-	 VALUES ('$phone',$name','$email','$area_access_send','$class','$start_date', '$end_date','$purpose','$induction', '$po_num','$valid', '$receipt_num')";
+	 VALUES ('$phone','$name','$email','$area_access_send','$class','$start_date', '$end_date','$purpose','$induction', '$po_num','$valid', '$receipt_num')";
 	 if (mysqli_query($conn, $sql)) {
 		echo "New record created successfully !";
 	 } else {
