@@ -28,8 +28,8 @@ $area_access = isset($_POST['area_access']) ? $_POST['area_access'] : ''; //is a
 $area_access_send = is_array($area_access) ? implode(", ", $area_access) : ''; //implode area access
 echo $area_access_send;
 
-	$fname = $_POST['fname'];
-	$lname = $_POST['lname'];
+	$name = $_POST['name'];
+	$phone = $_POST['phone'];
 	$purpose = $_POST['purpose'];
 	$class = $_POST['class'];
 	$start_date = $_POST['start_date'];
@@ -44,8 +44,8 @@ echo $area_access_send;
 	$po_num = $_POST['po_num'];
 	$receipt_num = $_POST['receipt_num'];
 
-	echo($fname.
-	$lname.
+	echo($name.
+	$phone.
 	$purpose.
 	$class.
 	$start_date.
@@ -57,8 +57,8 @@ echo $area_access_send;
 	$valid.
 	$receipt_num);
 	
-	 $sql = "INSERT INTO site_access (name,email,area_access,class,start_date,end_date,purpose,induction,po_num,valid,receipt_num)
-	 VALUES ('$fname','$email','$area_access_send','$class','$start_date', '$end_date','$purpose','$induction', '$po_num','$valid', '$receipt_num')";
+	 $sql = "INSERT INTO site_access (phone,name,email,area_access,class,start_date,end_date,purpose,induction,po_num,valid,receipt_num)
+	 VALUES ('$phone',$name','$email','$area_access_send','$class','$start_date', '$end_date','$purpose','$induction', '$po_num','$valid', '$receipt_num')";
 	 if (mysqli_query($conn, $sql)) {
 		echo "New record created successfully !";
 	 } else {

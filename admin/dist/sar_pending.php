@@ -124,7 +124,7 @@ echo("<script>
                             <div class="collapse" id="Layouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="sar_pending.php">Pending</a>
-                                    <a class="nav-link" href="sar_approved.php">Accepted</a>
+                                    <a class="nav-link" href="sar_approved.php">Approved</a>
                                     <a class="nav-link" href="sar_declined.php">Declined</a>
                                     <!-- <a class="nav-link" href="layout-static.html">Static Navigation</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
