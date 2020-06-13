@@ -316,11 +316,19 @@ echo("<script>
                                                             
                                                          ?>
                                                         <form action="" method="post">
-                                                         <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
-                                                        <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
+                                                         <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>"/>
+                                                        <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>"/>
 
-                                                        <input type="submit" name="app" class="btn btn-success" value="approve">
-                                                        <input type="submit" name="dec" class="btn btn-danger" value="decline">
+                                                        <div class="row">
+                                                            
+                                                        <button type="submit" name="app" class="btn btn-success col-md-5 ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check-square" aria-hidden="true"></i>
+                                                        </button>
+
+
+                                                        <button type="submit" name="dec" class="btn btn-danger col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
+                                                        </button>
+                                                        </div>
+                                                       
                                                         </form>
 
                                                         <?php ;} 

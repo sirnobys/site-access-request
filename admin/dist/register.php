@@ -20,10 +20,15 @@
         $username = mysqli_real_escape_string($con,$username); //escapes special characters in a string
         $email = stripslashes($_REQUEST['email']);
         $email = mysqli_real_escape_string($con,$email);
-        $level = stripslashes($_POST['level']);
+        $level = stripslashes($_REQUEST['level']);
         $level = mysqli_real_escape_string($con,$level);
+        $phone = stripslashes($_POST['phone']);
+        $phone = mysqli_real_escape_string($con,$level);
         $password = stripslashes($_REQUEST['password']);
+        $cpassword = stripslashes($_REQUEST['cpassword']);
         $password = mysqli_real_escape_string($con,$password);
+        $cpassword = mysqli_real_escape_string($con,$cpassword);
+
 
         $trn_date = date("Y-m-d H:i:s");
         $query = "INSERT into `users` (username, password, email, trn_date, level) VALUES ('$username', '".md5($password)."', '$email', '$trn_date', $level)";
@@ -45,37 +50,47 @@
                                         <form name="registration" method="post" action="">
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputFirstName">Username</label><input required class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" /></div>
+                                                    <div class="form-group"><label class="small mb-1" for="inputFirstName">Username</label><input required class="form-control py-4" name="username" id="inputFirstName" type="text" placeholder="Enter first name" /></div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputLastName">Last Name</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
+                                                    <div class="form-group"><label class="small mb-1" for="inputLastName">Last Name</label> 
+                                                    <select  class="form-control "  name="level">
+                                                    <option  value="0">HOD</option>
+                                                     <option value="1">SECURITY MANAGER</option>
+                                                </select>
+                                            </div>
                                                 </div>
+                                              
+                                              
+                                                <!-- <div class="col-md-6">
+                                                    <div class="form-group"><label class="small mb-1" for="inputLastName">Last Name</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
+                                                </div> -->
                                             </div>
                                             
 
                                              <div class="form-row">
                                                 <div class="col-md-6">
                                                    <div class="form-group ">
-                                                <label class="small mb-1" for="inputEmailAddress">Email</label><input required class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
+                                                <label class="small mb-1" for="inputEmailAddress">Email</label><input required name="email" class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
                                             </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Phone</label><input required class="form-control py-4" id="evt" type="text" placeholder="Phone number"  onkeypress="checkint(event)"/></div>
+                                                    <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Phone</label><input required class="form-control py-4" id="evt" name="phone" type="text" placeholder="Phone number"  /></div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input required class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" /></div>
+                                                    <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input required class="form-control py-4" name="password"  id="inputPassword" type="password" placeholder="Enter password" /></div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Confirm Password</label><input required class="form-control py-4" id="inputConfirmPassword" type="password" placeholder="Confirm password" /></div>
+                                                    <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Confirm Password</label><input required class="form-control py-4" name="cpassword" id="inputConfirmPassword" type="password" placeholder="Confirm password" /></div>
                                                 </div>
                                             </div>
-                                            <div class="form-group mt-4 mb-0"><a type="submit" name="submit" class="btn btn-primary btn-block" href="login.html">Create Account</a></div>
+                                            <div class="form-group mt-4 mb-0"><input type="submit" name="submit" class="btn btn-primary btn-block" > </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.html">Have an account? Go to login</a></div>
+                                        <div class="small"><a href="login.php">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>
