@@ -6,7 +6,7 @@ Author: Javed Ur Rehman
 Website: http://www.allphptricks.com/
 */
 
-include("../../login/auth.php"); //include auth.php file on all secure pages ?>
+include("../../../login/auth.php"); //include auth.php file on all secure pages ?>
 <?php
 $servername='localhost';
 $username='root';
@@ -73,7 +73,7 @@ echo("<script>
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../assets/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -96,7 +96,8 @@ echo("<script>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
                         <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" href="../../login/logout.php">Logout</a>
+                    <a  class="dropdown-item" href="../logout.php">Logout</a>
+                   
 
                     </div>
                 </li>
@@ -194,7 +195,7 @@ echo("<script>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Administrator's Control Panel</h1>
+                        <h1 class="mt-4">HOD's Control Panel</h1>
                        <!--  <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Requests</li>
                         </ol> -->
@@ -251,7 +252,7 @@ echo("<script>
                             </div>
                         </div> -->
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-table mr-1"></i>Requests</div>
+                            <div class="card-header bg-success text-white">Approved Requests</div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -283,15 +284,13 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access where status='2
-                                        '" ;
+                                        $query="SELECT * from site_access where status='1'" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        
 
 
 
-                     
                                        $dataRow = "";
                                        
 
@@ -426,12 +425,12 @@ echo("<script>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="../assets/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
+        <script src="../assets/demo/datatables-demo.js"></script>
     </body>
 </html>

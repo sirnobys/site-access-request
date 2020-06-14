@@ -6,12 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Page Title - SB Admin</title>
+        <title>Register User</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
 
-    <body class="bg-primary">
+    
         <?php
     require('../../login/db.php');
     // If form submitted, insert values into the database.
@@ -34,10 +34,18 @@
         $query = "INSERT into `users` (username, password, email, trn_date, level) VALUES ('$username', '".md5($password)."', '$email', '$trn_date', $level)";
         $result = mysqli_query($con,$query);
         if($result){
-            echo "<div class='form'><h3>You are registered successfully.</h3><br/>Click here to <a href='login.php'>Login</a></div>";
+           echo "
+                <div class='alert alert-success' role='alert'>
+  <h4 class='alert-heading'>Successfully Created Account!</h4>
+ 
+  <hr>
+  <p class='mb-0'><a href='login.php' class='btn btn-primary'> click here to login<a/></p>
+</div>";
         }
     }else{
+
 ?>
+<body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -53,7 +61,7 @@
                                                     <div class="form-group"><label class="small mb-1" for="inputFirstName">Username</label><input required class="form-control py-4" name="username" id="inputFirstName" type="text" placeholder="Enter first name" /></div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputLastName">Last Name</label> 
+                                                    <div class="form-group"><label class="small mb-1" for="inputLastName">Level</label> 
                                                     <select  class="form-control "  name="level">
                                                     <option  value="0">HOD</option>
                                                      <option value="1">SECURITY MANAGER</option>

@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Page Title - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
+        <title>Login</title>
+        <link href="assets/css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <?php
@@ -33,15 +33,15 @@
             $logged_in_user = mysqli_fetch_assoc($results);
             if ($logged_in_user['level'] == 0) {
 
-                $_SESSION['username'] = $username;
+                $_SESSION['username'] = $logged_in_user['username'];
                 $_SESSION['success']  = "You are now logged in";
-                header('location: request.php');  
+                header('location: hod/index.php');  
 
             }elseif($logged_in_user['level'] == 1){
                 $_SESSION['username'] = $logged_in_user['username'];
                 $_SESSION['success']  = "You are now logged in";
 
-                header('location: index.php');
+                header('location: sm/index.php');
             }
           
 
@@ -108,7 +108,7 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="assets/js/scripts.js"></script>
         <?php } ?>
 
     </body>
