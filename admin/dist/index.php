@@ -6,7 +6,7 @@ Author: Javed Ur Rehman
 Website: http://www.allphptricks.com/
 */
 
-include("../../../login/auth.php"); //include auth.php file on all secure pages ?>
+include("../../login/auth.php"); //include auth.php file on all secure pages ?>
 <?php
 $servername='localhost';
 $username='root';
@@ -73,7 +73,7 @@ echo("<script>
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
-        <link href="../assets/css/styles.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -96,7 +96,7 @@ echo("<script>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
                         <div class="dropdown-divider"></div>
-                    <a  class="dropdown-item" href="../logout.php">Logout</a>
+                    <a  class="dropdown-item" href="../../login/logout.php">Logout</a>
 
                     </div>
                 </li>
@@ -194,62 +194,48 @@ echo("<script>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">HOD's Control Panel</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Head of Department</li>
-                        </ol>
-                        <div class="row">
-
+                        <h1 class="mt-4">Administrator's Control Panel</h1>
+                       <!--  <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Requests</li>
+                        </ol> -->
+                    <!--     <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">
-                                        <span class="float-right h3 text-dark">20</span>
-                                        <p class="">Total Requests</span>
-                                        
-                                    </div>
+                                    <div class="card-body">Primary Card</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="index.php">View Details</a>
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-secondary text-white mb-4">
-                                    <div class="card-body">
-                                        <span class="">Pending Requests</span>
-                                        <span class="float-right h3 text-dark">20</span>
-                                    </div>
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Warning Card</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="sar_pending.php">View Details</a>
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">
-                                        <span class="">Approved Requests</span>
-                                        <span class="float-right h3 text-dark">20</span>
-                                    </div>
+                                    <div class="card-body">Success Card</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="sar_approved.php">View Details</a>
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">
-                                        <span class="">Declined Requests</span>
-                                        <span class="float-right h3 text-dark">20</span>
-                                    </div>
+                                    <div class="card-body">Danger Card</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="sar_declined.php">View Details</a>
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                        <!--  <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
@@ -265,7 +251,7 @@ echo("<script>
                             </div>
                         </div> -->
                         <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">All Requests</div>
+                            <div class="card-header"><i class="fas fa-table mr-1"></i>Requests</div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -297,7 +283,7 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access ORDER BY id asc" ;
+                                        $query="SELECT * from site_access ORDER BY status asc" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        
@@ -335,11 +321,11 @@ echo("<script>
 
                                                         <div class="row">
                                                             
-                                                        <button type="submit" name="app" class="btn btn-outline-success btn-flat col-md-5 ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check" aria-hidden="true"></i>
+                                                        <button type="submit" name="app" class="btn btn-success col-md-5 ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check" aria-hidden="true"></i>
                                                         </button>
 
 
-                                                        <button type="submit" name="dec" class="btn btn-outline-danger btn-flat col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
+                                                        <button type="submit" name="dec" class="btn btn-danger col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
                                                         </button>
                                                         </div>
                                                        
@@ -351,14 +337,14 @@ echo("<script>
                                                            else if ($status==1) {
                                                                # code...
                                                            ?> 
-                                                            <input type="submit"  name="" class="btn btn-success btn-flat" value="approved">
+                                                            <input type="submit"  name="" class="btn btn-success" value="approved">
                                                         
                                                             <?php  ;}
                                                                  else if ($status==2) {
 
                                                             ?>
                                                             
-                                                        <input type="submit"  name="" class="btn btn-danger btn-flat" value="declined">
+                                                        <input type="submit"  name="" class="btn btn-danger" value="declined">
                                                             <?php  ;}?>
 
                                                              <!-- <a href="" <?= $status > 0 ? 'disabled' : ''; ?> class="btn btn-success">Approve</a> -->
@@ -446,12 +432,12 @@ echo("<script>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../assets/js/scripts.js"></script>
+        <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="../assets/demo/datatables-demo.js"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
     </body>
 </html>

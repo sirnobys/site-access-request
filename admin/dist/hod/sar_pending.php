@@ -322,11 +322,11 @@ echo("<script>
 
                                                         <div class="row">
                                                             
-                                                        <button type="submit" name="app" class="btn btn-success col-md-5 ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check" aria-hidden="true"></i>
+                                                        <button type="submit" name="app" class="btn btn-outline-success col-md-5 ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check" aria-hidden="true"></i>
                                                         </button>
 
 
-                                                        <button type="submit" name="dec" class="btn btn-danger col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
+                                                        <button type="submit" name="dec" class="btn btn-outline-danger col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
                                                         </button>
                                                         </div>
                                                        
@@ -338,14 +338,14 @@ echo("<script>
                                                            else if ($status==1) {
                                                                # code...
                                                            ?> 
-                                                            <input type="submit"  name="" class="btn btn-success" value="approved">
+                                                            <input type="submit"  name="" class="btn btn-success btn-flat" value="approved">
                                                         
                                                             <?php  ;}
                                                                  else if ($status==2) {
 
                                                             ?>
                                                             
-                                                        <input type="submit"  name="" class="btn btn-danger" value="declined">
+                                                        <input type="submit"  name="" class="btn btn-danger btn-flat" value="declined">
                                                             <?php  ;}?>
 
                                                              <!-- <a href="" <?= $status > 0 ? 'disabled' : ''; ?> class="btn btn-success">Approve</a> -->
