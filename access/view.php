@@ -41,16 +41,74 @@ if(!$conn){
    die('Could not Connect My Sql:' .mysql_error());
 }
 
-$query="SELECT * from site_access where status =0 and status_2= 0";
+$query="SELECT * FROM site_access WHERE status = 0 AND status_2 = 0 AND id = 18";
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_assoc($result);
+// var_dump($row);
 
-var_dump($row);
-// explode
-$area_access=explode(",",$row['area_access']);
-  var_dump($area_access);
+foreach ($result as $row) {
+  # code...
+  $row['area_access'];
+  $area_access=explode(",",$row['area_access']);
+  // var_dump($area_access);
+
+}
+
+ $length = count($area_access);
+  for ($i=0; $i < $length; $i++) { 
+    # code..
+    $vari = $area_access[$i];
+    // echo "<br>";
+    switch ($vari) {
+    case 'Admin Buildings':
+      $adminBuild = '<i class="fa fa-check"></i>';
+      break;
+    case ' Mine Camp Village':
+       $mineCamp = '<i class="fa fa-check"></i>';
+      break;
+    case ' Environs':
+      $env = '<i class="fa fa-check"></i>';
+      break;
+   
+    case 'Active Mine Area':
+      $mineArea = '<i class="fa fa-check"></i>';
+      break;
+    case 'Processing Plant Area':
+      $plant = '<i class="fa fa-check"></i>';
+      break;
+    case 'Contractors Yard':
+      $contractors = '<i class="fa fa-check"></i>';
+      break;
+
+    case 'Outside Perimeter Fence':
+      $outside = '<i class="fa fa-check"></i>';
+      break;
+
+     case 'Warehouse':
+      $warehouse = '<i class="fa fa-check"></i>';
+      break;
+    // case 'Environs':
+    //   $env = '<i class="fa fa-check"></i>';
+    //   break;
 
 
+    default:
+      # code...
+      break;
+  }
+  }
+// // explode
+// $area_access=explode(",",$row['area_access']);
+//   var_dump($area_access);
+// $length = count($area_access);
+// for ($i=0; $i < $length; $i++) { 
+//   # code..
+//   echo $vari = $area_access[$i];
+//   echo "<br>";
+// }
+// echo $area_access[0];
+  
+  // echo $adminBuild; die();
 ?>
    
 
@@ -179,46 +237,45 @@ $area_access=explode(",",$row['area_access']);
                                                             <td>AREA AUTHORISED TO BE ACCESSED</td>
                                                             <td>TICK ACCESS AREAS REQUIRED</td>
                                                         </thead>
-                                                    </tr>
                                                     <tr>
                                                         <td bgcolor="white">white</td>
                                                         <td>Admin Buildings</td>
-                                                        <td></td>
+                                                        <td><?php echo $adminBuild ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="grey">grey</td>
                                                         <td>Warehouse</td>
-                                                        <td></td>
+                                                        <td><?php if (!empty($warehouse)){echo $warehouse; }else{echo "";} ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="purple">purple</td>
                                                         <td>Mine Camp Village</td>
-                                                        <td></td>
+                                                        <td><?php if (!empty($mineCamp)){echo $mineCamp; }else{echo "";} ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="red">red</td>
                                                         <td>Active Mine Area (Pits) </td>
-                                                        <td></td>
+                                                        <td><?php if (!empty($active)){echo $active; }else{echo "";}?></td>
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="orange">orange</td>
                                                         <td>Environs</td>
-                                                        <td></td>
+                                                        <td><?php if (!empty($env)){echo $env; }else{echo "";} ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="yellow">yellow</td>
                                                         <td>Processing Plant Area</td>
-                                                        <td></td>
+                                                        <td><?php if (!empty($plant)){echo $plant; }else{echo "";} ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="green">green</td>
                                                         <td>Outside Perimeter Fence Only</td>
-                                                        <td></td>
+                                                        <td><?php if (!empty($plant)){echo $plant; }else{echo "";} ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="blue">blue</td>
                                                         <td>Contractors Yard</td>
-                                                        <td></td>
+                                                        <td><?php if (!empty($contractors)){echo $contractors; }else{echo "";} ?></td>
                                                     </tr>
 
                                                 </table>
@@ -250,10 +307,12 @@ $area_access=explode(",",$row['area_access']);
                                       <td width="45%">
                                         <small class="font-weight-bold">If direct PMGL contractor – PO number must be referenced and validity confirmed by Commercial</small> 
                                       </td>
-                                      <td width="30%" class="font-weight-bold">PO Number: </td>
+                                      <td width="30%" class="font-weight-bold">
+                                        PO Number: <?php if (!empty($row['po_num'])){echo $row['po_num']; }else{echo "";} ?>
+                                       </td>
                                       <td width="30%" class="font-weight-bold">Valid: 
-                                        <span class="col-md-6">Yes []</span>
-                                        <span class="col-md-6">No []</span><br><br>
+                                        <span class="col-md-6">Yes <?=(($row['valid']=='yes')?"<i class='fa fa-check-square ' style='font-size: 20px;'></i>":"")?></span>
+                                        <span class="col-md-6">No <?=(($row['valid']=='no')?"<i class='fa fa-check-square ' style='font-size: 20px;'></i>":"")?></span><br><br>
                                         <small class="font-weight-bold">Commercial Rep to sign and date</small>
 
                                       </td>
@@ -266,7 +325,7 @@ $area_access=explode(",",$row['area_access']);
                                         </small>
                                   </td>
                                       <td colspan="2">
-                                        Receipt Number:
+                                        Receipt Number: <?php if (!empty($row['receipt_num'])){echo $row['receipt_num']; }else{echo "";} ?>
                                           <small class="font-weight-bold">
                                               <br>
                                             (copy to be attached if not already held by PMGL)

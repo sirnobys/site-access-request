@@ -297,7 +297,7 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access ORDER BY id asc" ;
+                                        $query="SELECT * from site_access where status_2=0 or status_2=1 or status_2=2" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        

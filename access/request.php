@@ -25,7 +25,7 @@ if(isset($_POST['submit']))
 		// }
 
 $area_access = isset($_POST['area_access']) ? $_POST['area_access'] : ''; //is area access posted or empty?
-$area_access_send = is_array($area_access) ? implode(", ", $area_access) : ''; //implode area access
+$area_access_send = is_array($area_access) ? implode(",", $area_access) : ''; //implode area access
 echo $area_access_send;
 
 	$name = $_POST['name'];
