@@ -15,11 +15,12 @@
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="css/all.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Vendor CSS-->
-    <link href="vendor/date-picker/css/datepicker.min.css" rel="stylesheet" media="all">
+    <!-- <link href="vendor/date-picker/css/datepicker.min.css" rel="stylesheet" media="all"> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <!-- <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"> -->
@@ -30,7 +31,27 @@
 </head>
 
 
+<?php
+$servername='localhost';
+$username='root';
+$password='';
+$dbname = "sar";
+$conn=mysqli_connect($servername,$username,$password,$dbname);
+if(!$conn){
+   die('Could not Connect My Sql:' .mysql_error());
+}
 
+$query="SELECT * from site_access where status =0 and status_2= 0";
+$result=mysqli_query($conn,$query);
+$row=mysqli_fetch_assoc($result);
+
+var_dump($row);
+// explode
+$area_access=explode(",",$row['area_access']);
+  var_dump($area_access);
+
+
+?>
    
 
 
@@ -87,24 +108,25 @@
                                     </thead>
                                     
                                         <tr>
-                                            <td colspan="3">Name:</td>
+                                            <td colspan="3" height="50">Name: <?php echo $row['name']; ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="table-danger">Employee</td>
-                                            <td>Purpose of Access</td>
+                                            <td class="table-danger">Employee <?=(($row['class']=='Employee')?"<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?></td>
+                                            <td>Purpose of Access </td>
                                             <td>Date/s Required</td>
                                         </tr>
                                         <tr>
-                                            <td class="table-danger">Contractor</td>
-                                            <td rowspan="3"></td>
-                                            <td rowspan="3"></td>
+                                            <td class="table-danger">Contractor <?= (($row['class']=='Contractor')? "<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?></td>
+                                            <td rowspan="3" class="text-center"><?php echo $row['purpose']?></td>
+                                            <td rowspan="3" width="35%" class="text-center"><?php echo $row['start_date'].' to '. $row['end_date']?></td>
                                         </tr>
                                         <tr>
-                                            <td class="table-danger">Visitor</td>
+                                            <td class="table-danger">Visitor <?= (($row['class']=='Visitor')? "<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td class="table-danger">Others</td>
-
+                                            <td class="table-danger">Others <?= (($row['class']=='Others')? "<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?>
+                                            </td>
                                         </tr>
                                         
                                         <tr>
@@ -118,7 +140,9 @@
                                             <td colspan="3" class=" "> 
                                                 
                                                 <span class="float-left">
-                                                <label class="mr-3"> FULL:</label>
+                                                <label class="mr-3 my-1">
+                                                 FULL: <?= (($row['induction']=='full')? " &nbsp;<i class='fa fa-check-square float-right my-1' style='font-size: 20px;'></i>":"")?>
+                                               </label>
                                                 <label>
                                                     <small> 
                                                         <i class="mr-3">(Book through&nbsp;pmgl.induction@perseusmining.co)</i>
@@ -127,7 +151,9 @@
                                                 </span>  
                                                 
                                                 <span class="float-right">
-                                                <label class="mr-3"> Visitor:</label>
+                                                <label class="mr-3 my-1"> 
+                                                Visitor: <?= (($row['induction']=='visitor')? "&nbsp;<i class='fa fa-check-square float-right my-1' style='font-size: 20px;'></i>":"")?>
+                                                </label>
                                                 
 
                                                  <label>
