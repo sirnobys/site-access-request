@@ -23,7 +23,7 @@ if(!$conn){
 if (isset($_POST['app'])) {
 
     $approve=$_POST['approve'];
-    $approve_query="UPDATE site_access set status=1 where id=$approve";
+    $approve_query="UPDATE site_access set status_2=1 where id=$approve";
     mysqli_query($conn,$approve_query);
 
     // if (mysqli_query($conn,$approve_query)) {
@@ -36,6 +36,8 @@ if (isset($_POST['app'])) {
 
         echo "<meta http-equiv='refresh' content='0'>";
 
+        header("location: sar_approved.php");
+
     // }
 
     
@@ -47,7 +49,7 @@ if (isset($_POST['dec'])) {
     
 $decline=$_POST['decline'];
 echo($decline);
-$decline_query="UPDATE site_access  set status=2 where id=$decline";
+$decline_query="UPDATE site_access  set status_2=2 where id=$decline";
 mysqli_query($conn,$decline_query);
 
 echo("<script>
@@ -56,6 +58,8 @@ echo("<script>
 
         ");
         echo "<meta http-equiv='refresh' content='0'>";
+
+        header("location: sar_declined.php");
 
 
 }
@@ -297,7 +301,7 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access where status_2=0 or status_2=1 or status_2=2" ;
+                                        $query="SELECT * from site_access where (status_2=0 or status_2=1 or status_2=2) and deleted_2='0'" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        

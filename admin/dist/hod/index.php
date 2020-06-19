@@ -35,7 +35,7 @@ if (isset($_POST['app'])) {
     //     ");
 
         echo "<meta http-equiv='refresh' content='0'>";
-
+header("location: sar_approved.php");
     // }
 
     
@@ -56,7 +56,7 @@ echo("<script>
 
         ");
         echo "<meta http-equiv='refresh' content='0'>";
-
+header("location: sar_declined.php");
 
 }
 
@@ -297,7 +297,7 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access where status=0 or status=1 or status=2" ;
+                                        $query="SELECT * from site_access where deleted=0 and (status=0 or status=1 or status=2) " ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        
@@ -321,7 +321,17 @@ echo("<script>
                                                     <td><?php echo $row1['end_date'];?></td>
                                                     <td><?php echo $row1['induction'];?></td>
                                                     <td><?php echo $row1['area_access'];?></td>
-                                                    <td><?php echo $row1['purpose'];?></td>
+                                                    <td>
+                                                         <form method="post" action="../../../access/view.php" target="_blank">
+                                                             <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
+                                                             <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
+                                                            <div align="center">
+                                                            <button type="submit" class=" btn-warning" name="view"> <i class="fa fa-edit fa-2x"></i>
+                                                            </button>
+                                                            </div>
+                                                        </form>
+
+                                                    </td>
                                                     <td>
                                                         <?php 
                                                             if ($status==0) {
@@ -334,12 +344,14 @@ echo("<script>
                                                         <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>"/>
 
                                                         <div class="row">
+                                                        
+
                                                             
-                                                        <button type="submit" name="app" class="btn btn-outline-success btn-flat col-md-5 ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check" aria-hidden="true"></i>
+                                                        <button type="submit" style="font-size: 13px" name="app" class="btn btn-outline-success btn-flat  ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check fa-2x" aria-hidden="true"></i>
                                                         </button>
 
 
-                                                        <button type="submit" name="dec" class="btn btn-outline-danger btn-flat col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
+                                                        <button type="submit"  name="dec" class="btn btn-outline-danger btn-flat  mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times fa-2x" aria-hidden="true"></i>
                                                         </button>
                                                         </div>
                                                        
@@ -351,14 +363,20 @@ echo("<script>
                                                            else if ($status==1) {
                                                                # code...
                                                            ?> 
-                                                            <input type="submit"  name="" class="btn btn-success btn-flat" value="approved">
+                                                           <div align="center">
+                                                                <input type="submit"  name="" class="btn btn-success btn-flat" value="approved">
+                                                           </div>
+                                                           
                                                         
                                                             <?php  ;}
                                                                  else if ($status==2) {
 
                                                             ?>
                                                             
-                                                        <input type="submit"  name="" class="btn btn-danger btn-flat" value="declined">
+                                                            <div align="center">
+                                                             <input type="submit"  name="" class="btn btn-danger btn-flat" value="declined">
+                                                           </div>
+                                                        
                                                             <?php  ;}?>
 
                                                              <!-- <a href="" <?= $status > 0 ? 'disabled' : ''; ?> class="btn btn-success">Approve</a> -->
@@ -371,6 +389,7 @@ echo("<script>
 
                                                     </td>
                                                         
+
 
                                                         
                                                 </tr>

@@ -38,7 +38,7 @@ if (isset($_POST['app'])) {
 
     // }
 
-    
+    header("location: sar_approved.php");
 
     
 }
@@ -60,7 +60,7 @@ echo("<script>
 
 }
 
-
+header("location: sar_declined.php");
 ?>
 
 <!DOCTYPE html>
@@ -284,7 +284,7 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access where status='1' and status_2='0';" ;
+                                      $query="SELECT * from site_access where status='1' and status_2='0' and deleted=0;" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        

@@ -41,11 +41,16 @@ if(!$conn){
    die('Could not Connect My Sql:' .mysql_error());
 }
 
-$query="SELECT * FROM site_access WHERE status = 0 AND status_2 = 0 AND id = 18";
+if (isset($_POST['view'])) {
+    $id=$_POST['approve'];
+$query="SELECT * FROM site_access WHERE  deleted=0 and deleted_2=0 AND id = $id";
+    
+  
+// $query="SELECT * FROM site_access WHERE status = 0 AND status_2 = 0 AND id = 18";
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_assoc($result);
 // var_dump($row);
-
+echo($id);
 foreach ($result as $row) {
   # code...
   $row['area_access'];
@@ -96,7 +101,12 @@ foreach ($result as $row) {
       # code...
       break;
   }
+
   }
+}
+
+
+else{header('location:index.');}
 // // explode
 // $area_access=explode(",",$row['area_access']);
 //   var_dump($area_access);
@@ -166,7 +176,7 @@ foreach ($result as $row) {
                                     </thead>
                                     
                                         <tr>
-                                            <td colspan="3" height="50">Name: <?php echo $row['name']; ?></td>
+                                            <td colspan="3" height="50">Name: <?php  if (!empty($row['name'])){echo $row['name']; }else{echo "";} ?></td>
                                         </tr>
                                         <tr>
                                             <td class="table-danger">Employee <?=(($row['class']=='Employee')?"<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?></td>
@@ -240,7 +250,7 @@ foreach ($result as $row) {
                                                     <tr>
                                                         <td bgcolor="white">white</td>
                                                         <td>Admin Buildings</td>
-                                                        <td><?php echo $adminBuild ?></td>
+                                                        <td><?php  if (!empty($adminBuild)){echo $adminBuild; }else{echo "";} ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="grey">grey</td>

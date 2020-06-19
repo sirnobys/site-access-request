@@ -61,6 +61,13 @@ echo("<script>
 }
 
 
+
+if (isset($_POST['trash'])) {
+ $approve=$_POST['approve'];
+ $delete_query="UPDATE site_access set deleted_2=1 where id = $approve";
+ mysqli_query($conn,$delete_query);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -284,7 +291,7 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access where status_2='1'" ;
+                                        $query="SELECT * from site_access where status_2='1'  and deleted_2='0'" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        
@@ -351,7 +358,16 @@ echo("<script>
                                                     </td>
                                                         
 
+                                                         <td>
+                                                        <form method="post">
+                                                             <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
+                                                             <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
+
+                                                            <button type="submit" onclick="return confirm('are you sure you want to delete?')" name="trash"> <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </form>
                                                         
+                                                    </td>
                                                 </tr>
                                          <?php endwhile;?>
 

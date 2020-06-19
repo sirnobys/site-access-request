@@ -60,6 +60,12 @@ echo("<script>
 
 }
 
+if (isset($_POST['trash'])) {
+ $approve=$_POST['approve'];
+ $delete_query="UPDATE site_access set deleted=1 where id = $approve";
+ mysqli_query($conn,$delete_query);
+}
+
 
 ?>
 
@@ -266,6 +272,7 @@ echo("<script>
                                                 <th>Area Access</th>
                                                 <th>Purpose</th>
                                                 <th>Action</th>
+                                                <th>Trash</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -278,13 +285,14 @@ echo("<script>
                                                 <th>Area Access</th>
                                                 <th>Purpose</th>
                                                 <th>Action</th>
+                                                <th>Trash</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access where status='1'" ;
+                                        $query="SELECT * from site_access where status='1' and deleted='0'" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        
@@ -317,7 +325,7 @@ echo("<script>
                                                             
                                                          ?>
                                                         <form action="" method="post">
-                                                         <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
+                                                        <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
                                                         <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
 
                                                         <input type="submit" name="app" class="btn btn-success" value="approve">
@@ -343,11 +351,18 @@ echo("<script>
                                                              <!-- <a href="" <?= $status > 0 ? 'disabled' : ''; ?> class="btn btn-success">Approve</a> -->
 
 
-                                                             <?php 
+                                                             
 
+                                                    </td>
+                                                    <td>
+                                                        <form method="post">
+                                                             <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
+                                                             <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
 
-                                                              ?>
-
+                                                            <button type="submit" onclick="return confirm('are you sure you want to delete?')" name="trash"> <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                        
                                                     </td>
                                                         
 

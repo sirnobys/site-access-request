@@ -36,6 +36,8 @@ if (isset($_POST['app'])) {
 
         echo "<meta http-equiv='refresh' content='0'>";
 
+        header("location: sar_approved.php");
+
     // }
 
     
@@ -56,7 +58,7 @@ echo("<script>
 
         ");
         echo "<meta http-equiv='refresh' content='0'>";
-
+        header("location: sar_declined.php");
 
 }
 
@@ -284,7 +286,7 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access where status='0'" ;
+                                        $query="SELECT * from site_access where status='0' and deleted='0'" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        
@@ -322,11 +324,11 @@ echo("<script>
 
                                                         <div class="row">
                                                             
-                                                        <button type="submit" name="app" class="btn btn-outline-success col-md-5 ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check" aria-hidden="true"></i>
+                                                        <button type="submit"  onclick="return confirm('confirm approval?')" name="app" class="btn btn-outline-success col-md-5 ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check" aria-hidden="true"></i>
                                                         </button>
 
 
-                                                        <button type="submit" name="dec" class="btn btn-outline-danger col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
+                                                        <button type="submit"  onclick="return confirm('confirm declination?')" name="dec" class="btn btn-outline-danger col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
                                                         </button>
                                                         </div>
                                                        
