@@ -38,7 +38,8 @@ if (isset($_POST['app'])) {
 
     // }
 
-    header("location: sar_approved.php");
+        header("location: sar_approved.php");
+    // header("location: sar_approved.php");
 
     
 }
@@ -57,10 +58,11 @@ echo("<script>
         ");
         echo "<meta http-equiv='refresh' content='0'>";
 
+        header("location: sar_declined.php");
 
 }
 
-header("location: sar_declined.php");
+// header("location: sar_declined.php");
 ?>
 
 <!DOCTYPE html>

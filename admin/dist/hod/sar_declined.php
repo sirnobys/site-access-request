@@ -269,8 +269,9 @@ if (isset($_POST['trash'])) {
                                                 <th>End date</th>
                                                 <th>induction</th>
                                                 <th>Area Access</th>
-                                                <th>Purpose</th>
-                                                <th>Action</th>
+                                                <th>Reason</th>
+                                                <th>Status</th>
+                                                <th>Trash</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -281,8 +282,9 @@ if (isset($_POST['trash'])) {
                                                 <th>End date</th>
                                                 <th>induction</th>
                                                 <th>Area Access</th>
-                                                <th>Purpose</th>
-                                                <th>Action</th>
+                                                <th>Reason</th>
+                                                <th>Status</th>
+                                                <th>Trash</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -315,7 +317,7 @@ if (isset($_POST['trash'])) {
                                                     <td><?php echo $row1['end_date'];?></td>
                                                     <td><?php echo $row1['induction'];?></td>
                                                     <td><?php echo $row1['area_access'];?></td>
-                                                    <td><?php echo $row1['purpose'];?></td>
+                                                    <td><?php echo $row1['reason'];?></td>
                                                     <td>
                                                         <?php 
                                                             if ($status==0) {
@@ -360,9 +362,11 @@ if (isset($_POST['trash'])) {
                                                         <form method="post">
                                                              <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
                                                              <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
-                                                            <button type="submit" onclick="return confirm('are you sure you want to delete?')" name="trash"> 
-                                                                   <i class="fa fa-trash"></i>
+                                                            
+                                                          <div align="center">
+                                                                 <button type="submit" class="btn btn-outline-danger" onclick="return confirm('are you sure you want to delete?')" name="trash"> <i class="fa fa-trash"></i>
                                                             </button>
+                                                        </div>
                                                         </form>
                                                         
                                                     </td>

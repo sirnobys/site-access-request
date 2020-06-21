@@ -359,8 +359,11 @@ if (isset($_POST['trash'])) {
                                                              <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
                                                              <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
 
-                                                            <button type="submit" onclick="return confirm('are you sure you want to delete?')" name="trash"> <i class="fa fa-trash"></i>
+                                                           
+                                                          <div align="center">
+                                                                 <button type="submit" class="btn btn-outline-danger" onclick="return confirm('are you sure you want to delete?')" name="trash"> <i class="fa fa-trash"></i>
                                                             </button>
+                                                        </div>
                                                         </form>
                                                         
                                                     </td>

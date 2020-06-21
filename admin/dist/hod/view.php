@@ -16,16 +16,16 @@
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="css/all.min.css" rel="stylesheet" media="all">
+    <link href="../../../access/css/all.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Vendor CSS-->
     <!-- <link href="vendor/date-picker/css/datepicker.min.css" rel="stylesheet" media="all"> -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../access/css/style.css">
 
     <!-- <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"> -->
-    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" >
+    <link href="../../../access/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" >
 
     <!-- Main CSS-->
     <!-- <link href="css/main.css" rel="stylesheet" media="all"> -->
@@ -44,7 +44,7 @@ if(!$conn){
 
 if (isset($_POST['view'])) {
 $id=$_POST['approve'];
-$query="SELECT * FROM site_access WHERE  deleted=0 and deleted_2=0 AND id = $id";
+$query="SELECT * FROM site_access WHERE  deleted=0 AND id = $id";
     
   
 // $query="SELECT * FROM site_access WHERE status = 0 AND status_2 = 0 AND id = 18";
@@ -67,31 +67,31 @@ foreach ($result as $row) {
     // echo "<br>";
     switch ($vari) {
     case 'Admin Buildings':
-      $adminBuild = '<i class="fa fa-check"></i>';
+      $adminBuild = '<i class="fa fa-check text-primary"></i>';
       break;
     case ' Mine Camp Village':
-       $mineCamp = '<i class="fa fa-check"></i>';
+       $mineCamp = '<i class="fa fa-check text-primary"></i>';
       break;
     case ' Environs':
-      $env = '<i class="fa fa-check"></i>';
+      $env = '<i class="fa fa-check text-primary"></i>';
       break;
    
     case 'Active Mine Area':
-      $mineArea = '<i class="fa fa-check"></i>';
+      $mineArea = '<i class="fa fa-check text-primary"></i>';
       break;
     case 'Processing Plant Area':
-      $plant = '<i class="fa fa-check"></i>';
+      $plant = '<i class="fa fa-check text-primary"></i>';
       break;
     case 'Contractors Yard':
-      $contractors = '<i class="fa fa-check"></i>';
+      $contractors = '<i class="fa fa-check text-primary"></i>';
       break;
 
     case 'Outside Perimeter Fence':
-      $outside = '<i class="fa fa-check"></i>';
+      $outside = '<i class="fa fa-check text-primary"></i>';
       break;
 
      case 'Warehouse':
-      $warehouse = '<i class="fa fa-check"></i>';
+      $warehouse = '<i class="fa fa-check text-primary"></i>';
       break;
     // case 'Environs':
     //   $env = '<i class="fa fa-check"></i>';
@@ -107,7 +107,7 @@ foreach ($result as $row) {
 }
 
 
-else{header('location:../');}
+else{header('location:index.php');}
 // // explode
 // $area_access=explode(",",$row['area_access']);
 //   var_dump($area_access);
@@ -150,7 +150,7 @@ else{header('location:../');}
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
                                         <div class="form-row">
-                                            <span class="col-md-6"> <img src="img/logo.jpg" width="200"></span>
+                                            <span class="col-md-6"> <img src="../../../access/img/logo.jpg" width="200"></span>
                                            
                                            <div class="col-md-6 text-danger">
                                             <span class="float-right font-weight-bold">SITE ACCESS REQUEST</span><br>
@@ -177,24 +177,24 @@ else{header('location:../');}
                                     </thead>
                                     
                                         <tr>
-                                            <td colspan="3" height="50">Name: <?php  if (!empty($row['name'])){echo $row['name']; }else{echo "";} ?></td>
+                                            <td colspan="3" height="50">Name: <span class="text-primary"> <?php  if (!empty($row['name'])){echo $row['name']; }else{echo "";} ?></span></td>
                                         </tr>
                                         <tr>
-                                            <td class="table-danger">Employee <?=(($row['class']=='Employee')?"<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?></td>
-                                            <td>Purpose of Access </td>
+                                            <td class="table-danger">Employee <?=(($row['class']=='Employee')?"<i class='fa fa-check-square float-right text-primary' style='font-size: 20px;'></i>":"")?></td>
+                                            <td>Purpose of Access</td>
                                             <td>Date/s Required</td>
                                         </tr>
                                         <tr>
-                                            <td class="table-danger">Contractor <?= (($row['class']=='Contractor')? "<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?></td>
-                                            <td rowspan="3" class="text-center"><?php echo $row['purpose']?></td>
-                                            <td rowspan="3" width="35%" class="text-center"><?php echo $row['start_date'].' to '. $row['end_date']?></td>
+                                            <td class="table-danger">Contractor <?= (($row['class']=='Contractor')? "<i class='fa fa-check-square text-primary float-right' style='font-size: 20px;'></i>":"")?></td>
+                                            <td rowspan="3" class="text-center"><span class="text-primary"><?php echo $row['purpose']?></span></td>
+                                            <td rowspan="3" width="35%" class="text-center text-primary"><?php echo $row['start_date'].' to '. $row['end_date']?></td>
                                         </tr>
                                         <tr>
-                                            <td class="table-danger">Visitor <?= (($row['class']=='Visitor')? "<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?>
+                                            <td class="table-danger">Visitor <?= (($row['class']=='Visitor')? "<i class='fa fa-check-square float-right text-primary' style='font-size: 20px;'></i>":"")?>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="table-danger">Others <?= (($row['class']=='Others')? "<i class='fa fa-check-square float-right' style='font-size: 20px;'></i>":"")?>
+                                            <td class="table-danger">Others <?= (($row['class']=='Others')? "<i class='fa fa-check-square float-right text-primary' style='font-size: 20px;'></i>":"")?>
                                             </td>
                                         </tr>
                                         
@@ -210,7 +210,7 @@ else{header('location:../');}
                                                 
                                                 <span class="float-left">
                                                 <label class="mr-3 my-1">
-                                                 FULL: <?= (($row['induction']=='full')? " &nbsp;<i class='fa fa-check-square float-right my-1' style='font-size: 20px;'></i>":"")?>
+                                                 FULL: <?= (($row['induction']=='full')? " &nbsp;<i class='fa fa-check-square float-right my-1 text-primary' style='font-size: 20px; '></i>":"")?>
                                                </label>
                                                 <label>
                                                     <small> 
@@ -221,7 +221,7 @@ else{header('location:../');}
                                                 
                                                 <span class="float-right">
                                                 <label class="mr-3 my-1"> 
-                                                Visitor: <?= (($row['induction']=='visitor')? "&nbsp;<i class='fa fa-check-square float-right my-1' style='font-size: 20px;'></i>":"")?>
+                                                Visitor: <?= (($row['induction']=='visitor')? "&nbsp;<i class='fa fa-check-square float-right my-1 text-primary' style='font-size: 20px;'></i>":"")?>
                                                 </label>
                                                 
 
@@ -319,11 +319,11 @@ else{header('location:../');}
                                         <small class="font-weight-bold">If direct PMGL contractor – PO number must be referenced and validity confirmed by Commercial</small> 
                                       </td>
                                       <td width="30%" class="font-weight-bold">
-                                        PO Number: <?php if (!empty($row['po_num'])){echo $row['po_num']; }else{echo "";} ?>
+                                        PO Number:<span class="text-primary"> <?php if (!empty($row['po_num'])){echo $row['po_num']; }else{echo "";} ?></span>
                                        </td>
                                       <td width="30%" class="font-weight-bold">Valid: 
-                                        <span class="col-md-6">Yes <?=(($row['valid']=='yes')?"<i class='fa fa-check-square ' style='font-size: 20px;'></i>":"")?></span>
-                                        <span class="col-md-6">No <?=(($row['valid']=='no')?"<i class='fa fa-check-square ' style='font-size: 20px;'></i>":"")?></span><br><br>
+                                        <span class="col-md-6">Yes <?=(($row['valid']=='yes')?"<i class='fa fa-check-square text-primary' style='font-size: 20px;'></i>":"")?></span>
+                                        <span class="col-md-6">No <?=(($row['valid']=='no')?"<i class='fa fa-check-square text-primary' style='font-size: 20px;'></i>":"")?></span><br><br>
                                         <small class="font-weight-bold">Commercial Rep to sign and date</small>
 
                                       </td>
@@ -336,7 +336,7 @@ else{header('location:../');}
                                         </small>
                                   </td>
                                       <td colspan="2">
-                                        Receipt Number: <?php if (!empty($row['receipt_num'])){echo $row['receipt_num']; }else{echo "";} ?>
+                                        Receipt Number: <span class="text-primary"><?php if (!empty($row['receipt_num'])){echo $row['receipt_num']; }else{echo "";} ?></span>
                                           <small class="font-weight-bold">
                                               <br>
                                             (copy to be attached if not already held by PMGL)

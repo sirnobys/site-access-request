@@ -273,6 +273,7 @@ if (isset($_POST['trash'])) {
                                                 <th>Area Access</th>
                                                 <th>Purpose</th>
                                                 <th>Action</th>
+                                                <th>Trash</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -285,6 +286,7 @@ if (isset($_POST['trash'])) {
                                                 <th>Area Access</th>
                                                 <th>Purpose</th>
                                                 <th>Action</th>
+                                                <th>Trash</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -362,9 +364,11 @@ if (isset($_POST['trash'])) {
                                                         <form method="post">
                                                              <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
                                                              <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
-
-                                                            <button type="submit" onclick="return confirm('are you sure you want to delete?')" name="trash"> <i class="fa fa-trash"></i>
+                                                             <div align="center">
+                                                                 <button type="submit" class="btn btn-outline-danger" onclick="return confirm('are you sure you want to delete?')" name="trash"> <i class="fa fa-trash"></i>
                                                             </button>
+                                                             </div>
+                                                            
                                                         </form>
                                                         
                                                     </td>

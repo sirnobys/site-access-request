@@ -48,19 +48,27 @@ if (isset($_POST['app'])) {
 if (isset($_POST['dec'])) {
     
 $decline=$_POST['decline'];
+$reason=$_POST['reason'];
 echo($decline);
-$decline_query="UPDATE site_access  set status=2 where id=$decline";
-mysqli_query($conn,$decline_query);
 
-echo("<script>
-        alert('Access declined');
-    </script>
+if ($reason) {
+    $query= "UPDATE site_access set reason= '$reason' where id = $decline";
+    mysqli_query($conn,$query);
+    $decline_query="UPDATE site_access  set status=2 where id=$decline";
+    mysqli_query($conn,$decline_query);
+}
 
-        ");
+// echo("<script>
+//         alert('Access declined');
+//     </script>
+
+//         ");
         echo "<meta http-equiv='refresh' content='0'>";
         header("location: sar_declined.php");
 
 }
+
+
 
 
 ?>
@@ -78,6 +86,7 @@ echo("<script>
         <link href="../assets/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -310,7 +319,7 @@ echo("<script>
                                                     <td><?php echo $row1['end_date'];?></td>
                                                     <td><?php echo $row1['induction'];?></td>
                                                     <td><?php echo $row1['area_access'];?></td>
-                                                    <td><?php echo $row1['purpose'];?></td>
+                                                    <td><?php echo $row1['reason'];?></td>
                                                     <td>
                                                         <?php 
                                                             if ($status==0) {
@@ -321,6 +330,26 @@ echo("<script>
                                                         <form action="" method="post">
                                                          <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>"/>
                                                         <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>"/>
+                                                       <!--   <input type="hidden" name="reason" id="rea"  class="btn btn-danger" /> -->
+
+                                                       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                      <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                          <div class="modal-body">
+                                                           
+                                                              <div class="form-group">
+                                                                <label for="message-text" class="col-form-label">Reason for declination:</label>
+                                                                <textarea class="form-control" placeholder="type your requiredeason here" required="" name="reason" id="message-text"></textarea>
+                                                              </div>
+                                                            
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                            <button type="submit" name="dec" class="btn btn-primary">Send reason</button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
 
                                                         <div class="row">
                                                             
@@ -328,9 +357,13 @@ echo("<script>
                                                         </button>
 
 
-                                                        <button type="submit"  onclick="return confirm('confirm declination?')" name="dec" class="btn btn-outline-danger col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
+                                                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger col-md-5 mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times" aria-hidden="true"></i>
                                                         </button>
+
+
+
                                                         </div>
+
                                                        
                                                         </form>
 
@@ -408,6 +441,10 @@ echo("<script>
                         </div>
                     </div>
                 </main>
+
+
+
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -424,10 +461,41 @@ echo("<script>
         </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <script type="text/javascript">
 
 
+            function myFunction(){
+            var reasonWhy= prompt('reason');
 
+             if (reasonWhy!= null) 
+            {
+                 document.getElementById("rea").value = reasonWhy;
+                 
+            }
+            };
+           
+           
+           
+           
             </script>
 
 

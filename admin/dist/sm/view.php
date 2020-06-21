@@ -16,16 +16,16 @@
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="css/all.min.css" rel="stylesheet" media="all">
+    <link href="../../../access/css/all.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Vendor CSS-->
     <!-- <link href="vendor/date-picker/css/datepicker.min.css" rel="stylesheet" media="all"> -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../access/css/style.css">
 
     <!-- <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"> -->
-    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" >
+    <link href="../../../access/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" >
 
     <!-- Main CSS-->
     <!-- <link href="css/main.css" rel="stylesheet" media="all"> -->
@@ -44,7 +44,7 @@ if(!$conn){
 
 if (isset($_POST['view'])) {
 $id=$_POST['approve'];
-$query="SELECT * FROM site_access WHERE  deleted=0 and deleted_2=0 AND id = $id";
+$query="SELECT * FROM site_access WHERE deleted_2=0 AND id = $id";
     
   
 // $query="SELECT * FROM site_access WHERE status = 0 AND status_2 = 0 AND id = 18";
@@ -107,7 +107,7 @@ foreach ($result as $row) {
 }
 
 
-else{header('location:../');}
+else{header('location:index.php');}
 // // explode
 // $area_access=explode(",",$row['area_access']);
 //   var_dump($area_access);
@@ -150,7 +150,7 @@ else{header('location:../');}
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
                                         <div class="form-row">
-                                            <span class="col-md-6"> <img src="img/logo.jpg" width="200"></span>
+                                            <span class="col-md-6"> <img src="../../../access/img/logo.jpg" width="200"></span>
                                            
                                            <div class="col-md-6 text-danger">
                                             <span class="float-right font-weight-bold">SITE ACCESS REQUEST</span><br>

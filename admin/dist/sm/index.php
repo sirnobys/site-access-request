@@ -301,7 +301,7 @@ echo("<script>
                                             
                                         <?php 
 
-                                        $query="SELECT * from site_access where (status_2=0 or status_2=1 or status_2=2) and deleted_2='0'" ;
+                                        $query="SELECT * from site_access where deleted_2=0 and status=1 and (status_2=0 or status_2=1 or status_2=2 )" ;
                                        $table= mysqli_query($conn,$query);
                                        //$status = mysqli_fetch_assoc($table);
                                        
@@ -316,7 +316,7 @@ echo("<script>
                                          ?>
 
                                           <?php while($row1 = mysqli_fetch_array($table)):
-                                                      $status = $row1['status'];
+                                                      $status = $row1['status_2'];
                                             ?>
                                                 <tr>
                                                     <td><?php echo $row1['name'];?></td>
@@ -325,7 +325,17 @@ echo("<script>
                                                     <td><?php echo $row1['end_date'];?></td>
                                                     <td><?php echo $row1['induction'];?></td>
                                                     <td><?php echo $row1['area_access'];?></td>
-                                                    <td><?php echo $row1['purpose'];?></td>
+                                                    <td>
+                                                         <form method="post" action="view.php" target="_blank">
+                                                             <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
+                                                             <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
+                                                            <div align="center">
+                                                            <button type="submit"  class=" btn-warning" name="view"> <i class="fa fa-edit fa-2x"></i>
+                                                            </button>
+                                                            </div>
+                                                        </form>
+
+                                                    </td>
                                                     <td>
                                                         <?php 
                                                             if ($status==0) {

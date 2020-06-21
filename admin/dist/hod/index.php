@@ -63,6 +63,22 @@ header("location: sar_declined.php");
 
 ?>
 
+<?php 
+$p_result=mysqli_query($conn,"SELECT COUNT(*) status FROM site_access WHERE status=0;");
+$p_row=mysqli_fetch_assoc($p_result);
+
+$a_result=mysqli_query($conn,"SELECT COUNT(*) status FROM site_access WHERE status=1;");
+$a_row=mysqli_fetch_assoc($a_result);
+
+$d_result=mysqli_query($conn,"SELECT COUNT(*) status FROM site_access WHERE status=2;");
+$d_row=mysqli_fetch_assoc($d_result);
+
+$t_result=mysqli_query($conn,"SELECT COUNT(*) status FROM site_access;");
+$t_row=mysqli_fetch_assoc($t_result);
+
+
+ ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -203,7 +219,8 @@ header("location: sar_declined.php");
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">
-                                        <span class="float-right h3 text-dark">20</span>
+
+                                        <span class="float-right h3 font-weight-bold"><?php echo $t_row['status']; ?></span>
                                         <p class="">Total Requests</span>
                                         
                                     </div>
@@ -217,7 +234,7 @@ header("location: sar_declined.php");
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">
                                         <span class="">Pending Requests</span>
-                                        <span class="float-right h3 text-dark">20</span>
+                                        <span class="float-right h3 font-weight-bold"><?php echo $p_row['status']; ?></span>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="sar_pending.php">View Details</a>
@@ -229,7 +246,7 @@ header("location: sar_declined.php");
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
                                         <span class="">Approved Requests</span>
-                                        <span class="float-right h3 text-dark">20</span>
+                                        <span class="float-right h3 font-weight-bold"><?php echo $a_row['status']; ?></span>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="sar_approved.php">View Details</a>
@@ -241,7 +258,7 @@ header("location: sar_declined.php");
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">
                                         <span class="">Declined Requests</span>
-                                        <span class="float-right h3 text-dark">20</span>
+                                        <span class="float-right h3 font-weight-bold"><?php echo $d_row['status']; ?></span>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="sar_declined.php">View Details</a>
@@ -322,11 +339,11 @@ header("location: sar_declined.php");
                                                     <td><?php echo $row1['induction'];?></td>
                                                     <td><?php echo $row1['area_access'];?></td>
                                                     <td>
-                                                         <form method="post" action="../../../access/view.php" target="_blank">
+                                                         <form method="post" action="view.php" target="_blank">
                                                              <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
                                                              <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
                                                             <div align="center">
-                                                            <button type="submit" class=" btn-warning" name="view"> <i class="fa fa-edit fa-2x"></i>
+                                                            <button type="submit"  class=" btn-warning" name="view"> <i class="fa fa-edit fa-2x"></i>
                                                             </button>
                                                             </div>
                                                         </form>
