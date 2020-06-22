@@ -42,8 +42,8 @@ if(!$conn){
    die('Could not Connect My Sql:' .mysql_error());
 }
 
-if (isset($_POST['view'])) {
-$id=$_POST['approve'];
+
+$id =$_GET['id'];
 $query="SELECT * FROM site_access WHERE  deleted=0 AND id = $id";
     
   
@@ -104,10 +104,10 @@ foreach ($result as $row) {
   }
 
   }
-}
 
 
-else{header('location:index.php');}
+
+
 // // explode
 // $area_access=explode(",",$row['area_access']);
 //   var_dump($area_access);

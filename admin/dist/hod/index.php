@@ -77,6 +77,7 @@ $t_result=mysqli_query($conn,"SELECT COUNT(*) status FROM site_access;");
 $t_row=mysqli_fetch_assoc($t_result);
 
 
+
  ?>
 
 <!DOCTYPE html>
@@ -339,12 +340,14 @@ $t_row=mysqli_fetch_assoc($t_result);
                                                     <td><?php echo $row1['induction'];?></td>
                                                     <td><?php echo $row1['area_access'];?></td>
                                                     <td>
-                                                         <form method="post" action="view.php" target="_blank">
+                                                         <form method="post" action="" target="_blank">
                                                              <input type="hidden" name="approve" value="<?php echo($row1['id']) ?>">
                                                              <input type="hidden" name="decline" class="btn btn-danger" value="<?php echo($row1['id']) ?>">
                                                             <div align="center">
-                                                            <button type="submit"  class=" btn-warning" name="view"> <i class="fa fa-edit fa-2x"></i>
-                                                            </button>
+                                                                
+                                                         <a class="btn btn-outline-primary"  href="view.php?id=<?php echo($row1['id']) ?>" >
+                                                             <i class="fa fa-edit"></i>
+                                                         </a>
                                                             </div>
                                                         </form>
 
@@ -364,11 +367,11 @@ $t_row=mysqli_fetch_assoc($t_result);
                                                         
 
                                                             
-                                                        <button type="submit" style="font-size: 13px" name="app" class="btn btn-outline-success btn-flat  ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                                                        <button type="submit" style="font-size: 13px" name="app" class="btn btn-outline-success btn-flat  ml-auto mr-auto" value="approve" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check" aria-hidden="true"></i>
                                                         </button>
 
 
-                                                        <button type="submit"  name="dec" class="btn btn-outline-danger btn-flat  mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                                        <button type="submit"  name="dec" class="btn btn-outline-danger btn-flat  mr-auto ml-auto" value="decline" data-toggle="tooltip" data-placement="top" title="Decline"><i class="fa fa-times " aria-hidden="true"></i>
                                                         </button>
                                                         </div>
                                                        
